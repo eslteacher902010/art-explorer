@@ -1,0 +1,39 @@
+.searchSection {
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+}
+
+.searchLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.searchLabel input {
+  padding: 0.6rem;
+  font-size: 1rem;
+}
+
+.advanced {
+  margin-top: 0.75rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
