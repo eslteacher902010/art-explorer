@@ -3,7 +3,7 @@ export async function GET(req) {
     const { searchParams } = new URL(req.url);
     const q = searchParams.get("q");
 
-    // ✅ guard: always return JSON
+    // guard: always return JSON
     if (!q) {
       return Response.json([]);
     }

@@ -1,0 +1,26 @@
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.artBg {
+  position: absolute;
+  inset: 0;
+  background-image: url("/art/starry-night.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 500px auto;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

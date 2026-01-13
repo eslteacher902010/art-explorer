@@ -1,7 +1,14 @@
 .searchSection {
   max-width: 900px;
   margin-bottom: 1.5rem;
+
+  background-color: #f4f4f5; /* soft neutral gray */
+  padding: 1.25rem 1.5rem;
+  border-radius: 16px;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
 }
+
 
 .searchLabel {
   display: flex;
