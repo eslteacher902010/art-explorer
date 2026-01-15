@@ -54,7 +54,8 @@ function periodMatches(art) {
 }
 
   async function handleSearch(source) {
-    if(!query.trim()) return;
+    if (!query.trim()) return [];
+
 
     try{
         if (source === "met") return await fetchMET(query);
@@ -216,6 +217,7 @@ async function fetchRijksmuseum(query) {
 
       <div className={styles.filters}>
         <label>
+          Medium
         <select value={medium} onChange={(e) => setMedium(e.target.value)}>
           <option value="any">Any Medium</option>
           <option value="painting">Painting</option>
@@ -288,19 +290,26 @@ async function fetchRijksmuseum(query) {
         >
           Search the Rijksmuseum
         </button>
-      <button onClick={handleSearchAll}>Search All Museums</button>
 
+      <button
+        className={styles.searchAll}
+        onClick={handleSearchAll}
+      >
+        Search All Museums
+      </button>
       </div>
       </div>
 
       {loading && <p>Loading...</p>}
 
-      <div className={styles.resultsGrid}>
+      <div className={styles.resultsList}>
         {artworks.map((art, index) => (
-          <ArtCard key={art.objectID || art.id || index} art={art} />
+          <div className={styles.resultItem} key={art.objectID || art.id || index}>
+            <ArtCard art={art} />
+          </div>
         ))}
-
       </div>
+
          {!loading && artworks.length === 0 && (
   <p>No results found.</p>
 )}

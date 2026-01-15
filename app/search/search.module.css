@@ -1,29 +1,45 @@
+/* ---------- Page Section ---------- */
+
 .searchSection {
   max-width: 900px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 
-  background-color: #f4f4f5; /* soft neutral gray */
-  padding: 1.25rem 1.5rem;
-  border-radius: 16px;
+  background-color: #f1f3f5; /* single calm gray */
+  padding: 1.5rem 1.75rem;
+  border-radius: 18px;
 
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
+/* ---------- Search ---------- */
 
 .searchLabel {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
   font-weight: 600;
+  color: #111827;
 }
 
 .searchLabel input {
-  padding: 0.6rem;
+  padding: 0.7rem 0.75rem;
   font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: white;
 }
+
+.searchLabel input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* ---------- Filters ---------- */
 
 .advanced {
   margin-top: 0.75rem;
+  color: #374151;
 }
 
 .filters {
@@ -35,12 +51,83 @@
 .filters label {
   display: flex;
   flex-direction: column;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  color: #374151;
 }
+
+.filters select {
+  margin-top: 0.25rem;
+  padding: 0.45rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: white;
+}
+
+/* ---------- Buttons ---------- */
 
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
+}
+
+.actions button {
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #9ca3af;
+  background-color: #111; /* visible by default */
+  color: #111827;
+  font-size: 0.85rem;
+  color: white;
+  cursor: pointer;
+
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.actions button:hover {
+  background-color: #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+
+
+/* ---------- Results ---------- */
+
+.resultsList {
+  margin-top: 2rem;
+  background-color: #f1f3f5; /* SAME gray */
+  border-radius: 16px;
+  padding: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- Result Items ---------- */
+
+.resultItem {
+  background: white;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 12px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  align-items: center;
+  text-align: center;
+}
+
+.resultItem:last-child {
+  margin-bottom: 0;
+}
+
+.resultItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Text helpers ---------- */
+
+.source {
+  font-size: 0.75rem;
+  opacity: 0.6;
 }
