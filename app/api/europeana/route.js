@@ -5,7 +5,7 @@ export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const q = searchParams.get("q") || "";
     const offset = Number(searchParams.get("offset") || 0);
-    const PAGE_SIZE = 5;
+    const PAGE_SIZE = 50;
 
     if (!q.trim()) {
       return Response.json([]);
@@ -54,8 +54,8 @@ export async function GET(request) {
         item.dcContributor?.[0] ||
         "Unknown artist",
       image: item.edmPreview?.[0] || null,
-      objectDate: item.year?.[0] || "",
-      medium: item.type || "",
+      objectDate: item.year?.[0]?.toString() || item.dcDate?.[0]?.toString() || "",
+      medium: item.dcFormat?.[0] || item.medium?.[0] || item.type || "",
       source: "Europeana",
       url: item.guid,
     }));
