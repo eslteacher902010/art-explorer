@@ -272,12 +272,15 @@ async function fetchEuropeana(query, offset = 0) {
             Rijks
           </button>
 
+          {activeSource && activeSource !== "cleveland" && artworks.length > 0 && (
           <button
-            disabled={loading || !activeSource || activeSource === "cleveland"}
+            disabled={loading}
             onClick={handleLoadMore}
+            className={styles.loadMoreButton}
           >
-            Load more
+            {loading ? "Loading..." : "Load more"}
           </button>
+        )}
         </div>
       </div>
 
