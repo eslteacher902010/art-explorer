@@ -18,13 +18,15 @@ export async function GET(request) {
       return Response.json([]);
     }
 
-    const url =
-      `https://api.europeana.eu/record/v2/search.json` +
-      `?query=${encodeURIComponent(q)}` +
-      `&qf=TYPE:IMAGE` +
-      `&rows=${PAGE_SIZE}` +
-      `&start=${offset}` +
-      `&wskey=${EUROPEANA_KEY}`;
+   // Add "reusability=open" to ensure you actually get images you can show
+// and remove the strict IMAGE filter temporarily to see if data flows
+const url =
+  `https://api.europeana.eu/record/v2/search.json` +
+  `?query=${encodeURIComponent(q)}` + 
+  `&reusability=open` + // Helps find records with viewable images
+  `&rows=${PAGE_SIZE}` +
+  `&start=${offset}` +
+  `&wskey=${EUROPEANA_KEY}`;
 
     const res = await fetch(url, { cache: "no-store" });
 
