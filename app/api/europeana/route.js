@@ -7,9 +7,7 @@ export async function GET(request) {
     const offset = Number(searchParams.get("offset") || 0);
     const PAGE_SIZE = 50;
 
-    if (!q.trim()) {
-      return Response.json([]);
-    }
+    if (!q.trim()) return Response.json([]);
 
     const EUROPEANA_KEY = process.env.EUROPEANA_API_KEY;
 
@@ -18,36 +16,31 @@ export async function GET(request) {
       return Response.json([]);
     }
 
-   // Add "reusability=open" to ensure you actually get images you can show
-// and remove the strict IMAGE filter temporarily to see if data flows
-const url =
-  `https://api.europeana.eu/record/v2/search.json` +
-  `?query=${encodeURIComponent(q)}` + 
-  `&reusability=open` + // Helps find records with viewable images
-  `&rows=${PAGE_SIZE}` +
-  `&start=${offset}` +
-  `&wskey=${EUROPEANA_KEY}`;
+    const url =
+      `https://api.europeana.eu/record/v2/search.json` +
+      `?query=${encodeURIComponent(q)}` + 
+      `&reusability=open` + 
+      `&rows=${PAGE_SIZE}` +
+      `&start=${offset}` +
+      `&wskey=${EUROPEANA_KEY}`;
 
     const res = await fetch(url, { cache: "no-store" });
+    
+    // 1. Get the data as JSON immediately
+    const data = await res.json();
 
-    const text = await res.text();
-    let data;
+    // 2. Log to Render dashboard to see what's actually happening
+    console.log("FULL API URL:", url.replace(EUROPEANA_KEY, "HIDDEN")); 
+    console.log("STATUS:", res.status);
+    console.log("ITEMS COUNT:", data.itemsCount);
 
-    try {
-      data = JSON.parse(text);
-    } catch {
-      console.error("EUROPEANA NON-JSON RESPONSE:", text);
+    // 3. Validate items exist
+    if (!data.items || !Array.isArray(data.items)) {
+      console.log("No items array found in response");
       return Response.json([]);
     }
 
-    console.log("EUROPEANA STATUS:", res.status);
-    console.log("EUROPEANA itemsCount:", data.itemsCount);
-    console.log("EUROPEANA RAW items:", data.items?.length);
-
-    if (!Array.isArray(data.items)) {
-      return Response.json([]);
-    }
-
+    // 4. Map the results
     const results = data.items.map((item) => ({
       objectID: `europeana-${item.id}`,
       title: item.title?.[0] || "Untitled",
