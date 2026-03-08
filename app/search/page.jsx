@@ -200,6 +200,31 @@ async function fetchEuropeana(query, offset = 0) {
           />
         </label>
 
+        <div className={styles.filters}>
+          <label>
+            Medium:
+            <select value={medium} onChange={(e) => setMedium(e.target.value)}>
+              <option value="any">Any</option>
+              <option value="painting">Painting</option>
+              <option value="sculpture">Sculpture</option>
+              <option value="drawing">Drawing</option>
+              <option value="print">Print</option>
+              <option value="photograph">Photograph</option>
+            </select>
+          </label>
+
+          <label>
+            Period:
+            <select value={period} onChange={(e) => setPeriod(e.target.value)}>
+              <option value="any">Any</option>
+              <option value="renaissance">Renaissance (14-16th c.)</option>
+              <option value="baroque">Baroque (17th c.)</option>
+              <option value="romantic">Romantic (18th c.)</option>
+              <option value="modern">Modern (19-20th c.)</option>
+            </select>
+          </label>
+        </div>
+
         <div className={styles.actions}>
           <button
             onClick={async () => {

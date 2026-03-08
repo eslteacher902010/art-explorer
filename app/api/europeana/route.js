@@ -16,13 +16,15 @@ export async function GET(request) {
       return Response.json([]);
     }
 
-    const url =
-      `https://api.europeana.eu/record/v2/search.json` +
-      `?query=${encodeURIComponent(q)}` + 
-      `&reusability=open` + 
-      `&rows=${PAGE_SIZE}` +
-      `&start=${offset}` +
-      `&wskey=${EUROPEANA_KEY}`;
+   // app/api/europeana/route.js
+
+const url =
+  `https://api.europeana.eu/record/v2/search.json` +
+  `?query=${encodeURIComponent(q)}` + 
+  `&qf=TYPE:IMAGE` +       // Keep this to ensure we get pictures
+  `&rows=${PAGE_SIZE}` +
+  `&start=${offset + 1}` + 
+  `&wskey=${EUROPEANA_KEY}`;
 
     const res = await fetch(url, { cache: "no-store" });
     
