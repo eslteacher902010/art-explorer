@@ -24,6 +24,7 @@ export async function GET(req) {
       : "",
     objectDate: art.date_display || "",
     source: "Artic",
+    url: `https://www.artic.edu/artworks/${art.id}`,
   }));
 
   return Response.json(normalized);

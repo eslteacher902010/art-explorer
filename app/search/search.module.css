@@ -114,7 +114,10 @@
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   align-items: center;
   text-align: center;
+
+  overflow: visible;
 }
+
 
 .resultItem:last-child {
   margin-bottom: 0;
@@ -131,3 +134,4 @@
   font-size: 0.75rem;
   opacity: 0.6;
 }
+

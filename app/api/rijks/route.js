@@ -66,6 +66,7 @@ const validObjects = objects.filter(Boolean);
       objectDate:
         obj.produced_by?.timespan?.begin_of_the_begin || "",
       source: "Rijksmuseum",
+      url: obj.id
     }));
 
     return Response.json(normalized);

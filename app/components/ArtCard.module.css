@@ -1,0 +1,30 @@
+.imageButton {
+  all: unset;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Frame controls background, clipping, shadow */
+.imageFrame {
+  background: #f9fafb;
+  padding: 0.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Expanded state */
+.expanded {
+  transform: scale(1.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
+
+/* Image normalization */
+.image {
+  display: block;
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+}
