@@ -271,16 +271,6 @@ async function fetchEuropeana(query, offset = 0) {
           >
             Rijks
           </button>
-
-          {activeSource && activeSource !== "cleveland" && artworks.length > 0 && (
-          <button
-            disabled={loading}
-            onClick={handleLoadMore}
-            className={styles.loadMoreButton}
-          >
-            {loading ? "Loading..." : "Load more"}
-          </button>
-        )}
         </div>
       </div>
 
@@ -293,6 +283,18 @@ async function fetchEuropeana(query, offset = 0) {
           </div>
         ))}
       </div>
+
+      {activeSource && activeSource !== "cleveland" && artworks.length > 0 && (
+        <div className={styles.loadMoreContainer}>
+          <button
+            disabled={loading}
+            onClick={handleLoadMore}
+            className={styles.loadMoreButton}
+          >
+            {loading ? "Loading..." : "Load more"}
+          </button>
+        </div>
+      )}
 
       {!loading && activeSource && artworks.length === 0 && (
         <p>No results found.</p>
